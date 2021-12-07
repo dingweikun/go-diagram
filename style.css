@@ -1,0 +1,11 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.diagram-panel {
+  margin: 4px;
+  width: calc(100vw - 8px);
+  height: calc(100vh - 8px);
+  background-color: #dae4e4;
+}
