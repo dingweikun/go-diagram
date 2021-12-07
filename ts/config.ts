@@ -6,7 +6,8 @@ export const logicPortStyle = {
 
 const suffix = `.svg`;
 // const local = `~/img/IEC-Tag/`;
-const remote = `https://raw.githubusercontent.com/dingweikun/svg/master/`;
+// const remote = `https://raw.githubusercontent.com/dingweikun/svg/master/`;
+const remote = `https://raw.githubusercontent.com/dingweikun/go-diagram/master/img/IEC-Tag/`;
 const filePath = (name: string) => remote + name + suffix;
 
 export const logicNodeTemp = [
