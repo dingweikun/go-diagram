@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+
+    <div id="myDiagramDiv" class="diagram-panel"></div>
+
+    <!-- script -->
+
+    <script src="./lib/requirejs/require.js"></script>
+    <script>
+        require(["./dist/main"], m => m.main('myDiagramDiv'));
+    </script>
+</body>
+
+</html>
