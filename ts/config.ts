@@ -1,7 +1,7 @@
 export const logicPortStyle = {
-  size: 8,
-  fill: 'transparent',
-  cursor: 'pointer',
+  size: 9,
+  focus: "rgba(100,0,100,0.3)",
+  cursor: "pointer",
 };
 
 const suffix = `.svg`;
@@ -10,63 +10,86 @@ const remote = `https://raw.githubusercontent.com/dingweikun/go-diagram/master/i
 
 let path = local;
 export function setEnviroment(env: "local" | "remote") {
-  path = local
+  path = local;
   path = env === "local" ? local : remote;
-  console.log(filePath('fileName'));
 }
 
 const filePath = (name: string) => path + name + suffix;
 export const logicNodeTemp = [
   {
-    key: 'not',
-    svg: filePath('not'),
+    key: "not",
+    svg: filePath("not"),
     width: 45,
     height: 20,
     ports: [
-      { pos: 0.5, inp: true, nam: 'in' },
-      { pos: 0.5, inp: false, nam: 'out' },
+      { pos: 0.5, inp: true, nam: "in" },
+      { pos: 0.5, inp: false, nam: "out" },
     ],
   },
   {
-    key: 'and',
-    svg: filePath('and'),
+    key: "and",
+    svg: filePath("and"),
     width: 65,
     height: 30,
-    ports: [],
+    ports: [
+      { pos: 0.2, inp: true, nam: "a" },
+      { pos: 0.8, inp: true, nam: "b" },
+      { pos: 0.5, inp: false, nam: "out" },
+    ],
   },
   {
-    key: 'nand',
-    svg: filePath('nand'),
+    key: "nand",
+    svg: filePath("nand"),
     width: 65,
     height: 30,
-    ports: [],
+    ports: [
+      { pos: 0.2, inp: true, nam: "a" },
+      { pos: 0.8, inp: true, nam: "b" },
+      { pos: 0.5, inp: false, nam: "out" },
+    ],
   },
   {
-    key: 'or',
-    svg: filePath('or'),
+    key: "or",
+    svg: filePath("or"),
     width: 65,
     height: 30,
-    ports: [],
+    ports: [
+      { pos: 0.2, inp: true, nam: "a" },
+      { pos: 0.8, inp: true, nam: "b" },
+      { pos: 0.5, inp: false, nam: "out" },
+    ],
   },
   {
-    key: 'nor',
-    svg: filePath('nor'),
+    key: "nor",
+    svg: filePath("nor"),
     width: 65,
     height: 30,
-    ports: [],
+    ports: [
+      { pos: 0.2, inp: true, nam: "a" },
+      { pos: 0.8, inp: true, nam: "b" },
+      { pos: 0.5, inp: false, nam: "out" },
+    ],
   },
   {
-    key: 'xor',
-    svg: filePath('xor'),
+    key: "xor",
+    svg: filePath("xor"),
     width: 65,
     height: 30,
-    ports: [],
+    ports: [
+      { pos: 0.2, inp: true, nam: "a" },
+      { pos: 0.8, inp: true, nam: "b" },
+      { pos: 0.5, inp: false, nam: "out" },
+    ],
   },
   {
-    key: 'xnor',
-    svg: filePath('xnor'),
+    key: "xnor",
+    svg: filePath("xnor"),
     width: 65,
     height: 30,
-    ports: [],
+    ports: [
+      { pos: 0.2, inp: true, nam: "a" },
+      { pos: 0.8, inp: true, nam: "b" },
+      { pos: 0.5, inp: false, nam: "out" },
+    ],
   },
 ];

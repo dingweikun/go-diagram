@@ -14,7 +14,8 @@
 
     <script src="./lib/requirejs/require.js"></script>
     <script>
-        require(["./dist/main"], m => m.main('myDiagramDiv','local'));
+        let dg;
+        require(["./dist/main"], m => dg = m.main('myDiagramDiv','local'));
     </script>
 </body>
 

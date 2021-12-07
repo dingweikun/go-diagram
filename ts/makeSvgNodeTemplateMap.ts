@@ -1,5 +1,5 @@
-import * as go from '../lib/gojs/go';
-import { logicPortStyle, logicNodeTemp } from './config';
+import * as go from "../lib/gojs/go";
+import { logicPortStyle, logicNodeTemp } from "./config";
 
 const $ = go.GraphObject.make;
 
@@ -44,34 +44,49 @@ function makeLinePort(info: ILogicPortInfo) {
 
   const initializer = {
     portId: info.nam,
+
+    // connecting behavior
+
     fromLinkable: !info.inp,
     toLinkable: info.inp,
 
-    cursor: logicPortStyle.cursor,
-    strokeWidth: 0,
-    desiredSize: new go.Size(logicPortStyle.size, logicPortStyle.size),
-    fill: logicPortStyle.fill,
+    fromLinkableDuplicates: false,
+    toLinkableDuplicates: false,
 
-    // mouseEnter: function (e, port) {  // the PORT argument will be this Shape
-    //     if (!e.diagram.isReadOnly) port.fill = "rgba(255,0,255,0.5)";
-    // },
-    // mouseLeave: function (e, port) {
-    //     port.fill = "transparent";
-    // }
+    fromLinkableSelfNode: false,
+    toLinkableSelfNode: false,
+
+    fromMaxLinks: 1,
+    toMaxLinks: 1,
+
+    //GraphObject.fromEndSegmentLength, GraphObject.toEndSegmentLength
+    //GraphObject.fromShortLength, GraphObject.toShortLength
+
+    fill: "transparent",
+    strokeWidth: 0,
+    cursor: logicPortStyle.cursor,
+    desiredSize: new go.Size(logicPortStyle.size, logicPortStyle.size),
+
+    mouseEnter: function (e: go.InputEvent, port: go.GraphObject) {
+      if (!e.diagram.isReadOnly) (port as go.Shape).fill = logicPortStyle.focus;
+    },
+    mouseLeave: function (e: go.InputEvent, port: go.GraphObject) {
+      (port as go.Shape).fill = "transparent";
+    },
   };
 
   const others = info.inp
     ? {
         alignment: new go.Spot(0, info.pos),
         alignmentFocus: go.Spot.LeftCenter,
-        // alignmentFocus: new go.Spot(1, 0.5, info.oft, 0),
+
         fromSpot: go.Spot.LeftCenter,
         toSpot: go.Spot.LeftCenter,
       }
     : {
         alignment: new go.Spot(1, info.pos),
         alignmentFocus: go.Spot.RightCenter,
-        // alignmentFocus: new go.Spot(0, 0.5, info.oft, 0),
+
         fromSpot: go.Spot.RightCenter,
         toSpot: go.Spot.RightCenter,
       };
