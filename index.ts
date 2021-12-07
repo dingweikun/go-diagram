@@ -7,4 +7,4 @@ import { main } from './ts/main';
 // const appDiv: HTMLElement = document.getElementById('app');
 // appDiv.innerHTML = `<h1>TypeScript Starter</h1>`;
 
-main('myDiagramDiv');
+main('myDiagramDiv', 'remote');

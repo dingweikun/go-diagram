@@ -5,11 +5,17 @@ export const logicPortStyle = {
 };
 
 const suffix = `.svg`;
-// const local = `~/img/IEC-Tag/`;
-// const remote = `https://raw.githubusercontent.com/dingweikun/svg/master/`;
+const local = `img/IEC-Tag/`;
 const remote = `https://raw.githubusercontent.com/dingweikun/go-diagram/master/img/IEC-Tag/`;
-const filePath = (name: string) => remote + name + suffix;
 
+let path = local;
+export function setEnviroment(env: "local" | "remote") {
+  path = local
+  path = env === "local" ? local : remote;
+  console.log(filePath('fileName'));
+}
+
+const filePath = (name: string) => path + name + suffix;
 export const logicNodeTemp = [
   {
     key: 'not',

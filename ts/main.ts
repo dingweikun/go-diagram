@@ -1,10 +1,14 @@
 import * as GO from '../lib/gojs/go';
+import { setEnviroment } from './config';
 // import * as GO from '../lib/gojs/go-debug'
 import { makeSvgNodeTemplateMap } from './makeSvgNodeTemplateMap';
 
 const $ = GO.GraphObject.make;
 
-export function main(elementId: string): void {
+export function main(elementId: string, env: "local" | "remote"): void {
+
+  setEnviroment(env);
+
   const diagram = $(GO.Diagram, elementId);
 
   diagram.nodeTemplateMap = makeSvgNodeTemplateMap();
