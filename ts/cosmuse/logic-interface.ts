@@ -7,7 +7,7 @@ export type SignalType = "Analog" | "Digital";
 export interface ILogicPortDefine {
   readonly portId: string; // 大写字母+数字
   readonly type: SignalType;
-  readonly isIn: false;
+  readonly isIn: boolean;
 }
 
 export interface ILogicNodeDefine {

@@ -67,7 +67,7 @@ function createGraphLinksModel(): go.GraphLinksModel {
   mode.linkToPortIdProperty = "toPort";
 
   mode.nodeDataArray = [
-    { key: "Alpha", color: "lightblue", category: "??" },
+    { key: "Alpha", color: "lightblue", category: "??", tag:"this is name"},
     { key: "Beta", color: "orange", category: "nand" },
     { key: "Gamma", color: "lightgreen", category: "xor" },
     { key: "Delta", color: "pink", category: "xnor" },
