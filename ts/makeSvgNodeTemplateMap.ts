@@ -1,4 +1,4 @@
-import * as go from "../lib/gojs/go";
+import * as go from "./globalReference";
 import { logicPortStyle, logicNodeTemp } from "./config";
 
 const $ = go.GraphObject.make;

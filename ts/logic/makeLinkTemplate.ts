@@ -1,4 +1,4 @@
-import * as go from "../../lib/gojs/go";
+import * as go from "../globalReference";
 
 const $ = go.GraphObject.make;
 
