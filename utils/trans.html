@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+</head>
+
+<body>
+    <div>
+        <input type="file" id="files" onchange="fileImport()" accept="text/xml">
+        <hr>
+        <button onclick="copyPre()">复制转换结果</button>
+        <pre id="result" white-space="pre-wrap"></pre>
+        <input id="copyres" type="text" readonly>
+    </div>
+
+    <script src="../lib/jquery/jquery-1.10.2.js"></script>
+    <script>
+
+        function copyPre() {
+            let res = document.getElementById('copyres');
+            res.select(); // 选择对象
+            document.execCommand("Copy"); // 执行浏览器复制命令
+            alert("转换结果已复制到剪贴板");
+        }
+
+        let xml;
+        let mds = [];
+
+        function showResult(obj) {
+
+            let str = JSON.stringify(obj, null, 2);
+            document.getElementById('result').innerText = str;
+
+            let res = JSON.stringify(obj);
+            document.getElementById('copyres').value = res;
+        }
+
+
+
+        function translate(moduleElement) {
+
+            let trans_port = (portElement) => {
+
+                let portId = portElement.getAttribute("Target")?.toUpperCase().trim();
+                if (portId.length <= 0) return null;
+
+                let isIn = portElement.getAttribute("Type") === "InPut";
+                let type = portElement.getAttribute("LineType") === "AnalogLine" ? "Analog" : "Digital";
+
+                return { portId: portId, isIn: isIn, type: type };
+            }
+
+
+
+            let category = moduleElement.getAttribute('name')?.toUpperCase().trim();
+            if (category.length <= 0) return null;
+
+            let tag = moduleElement.getAttribute('Desc')?.trim();
+            if (tag.length <= 0) return null;
+
+            let descr = moduleElement.getAttribute('Comment').trim();
+
+            let ports = [];
+            $(moduleElement).children('Port').each((i, p) => {
+
+                let port = trans_port(p);
+                if (port) {
+                    ports.push(port);
+                }
+            })
+
+            return {
+                category: category,
+                tag: tag,
+                descr: descr,
+                ports: ports
+            }
+        }
+
+
+        function fileImport() {
+            var input = document.getElementById('files');
+            var file = input.files[0];
+            console.log(file.size, file.name, file.type);
+
+            var fileReader = new FileReader();
+            fileReader.readAsText(file);
+
+            //文件加载出错
+            fileReader.onerror = () => alert('Could not read file, error code is ' + fileReader.error.code);
+
+            //加载成功后
+            fileReader.onload = function () {
+                $(fileReader.result).find('Module').each((index, module) => {
+
+                    //console.log(module.getAttribute('name').toUpperCase().trim());
+                    let res = translate(module);
+                    // console.log(res);
+                    if (res) mds.push(res);
+
+                });
+
+                console.log(mds);
+
+                // 显示
+                showResult(mds);
+            }
+
+        }
+
+
+
+
+    </script>
+</body>
+
+</html>

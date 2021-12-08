@@ -1,13 +1,13 @@
 import * as go from "../globalReference";
-import { ILogicNodeTempDefine } from "./logic-interface";
 import * as cfg from "./config";
+import { ILogicNodeTempDefine } from "./logic-interface";
 
 const $ = go.GraphObject.make;
 
 export function makePort(portId: string, isInport: boolean, labelColor: string) {
   var port = $(go.Shape, "Rectangle",
     {
-      fill: cfg.portColor, stroke: null,
+      fill: cfg.portColor, stroke: null, strokeWidth: 0,
       desiredSize: new go.Size(8, 8),
       portId: portId,  // declare this object to be a "port"
       toMaxLinks: 1,  // don't allow more than one link into a port
@@ -24,14 +24,14 @@ export function makePort(portId: string, isInport: boolean, labelColor: string) 
   if (isInport) {
     port.toSpot = go.Spot.Left;
     port.toLinkable = true;
-    lab.margin = new go.Margin(1, 0, 0, 1);
+    lab.margin = new go.Margin(1, 0, 0, 2);
     panel.alignment = go.Spot.TopLeft;
     panel.add(port);
     panel.add(lab);
   } else {
     port.fromSpot = go.Spot.Right;
     port.fromLinkable = true;
-    lab.margin = new go.Margin(1, 1, 0, 0);
+    lab.margin = new go.Margin(1, 2, 0, 0);
     panel.alignment = go.Spot.TopRight;
     panel.add(lab);
     panel.add(port);
@@ -43,11 +43,11 @@ export function makePort(portId: string, isInport: boolean, labelColor: string) 
 
 export function buildNodeTempBasic(def: ILogicNodeTempDefine) {
 
-  const inports: go.Panel[] = [];
-  const outports: go.Panel[] = [];
-
   const foreColor = def.fColor ?? cfg.foreColor;
   const backColor = def.bColor ?? cfg.backColor;
+
+  const inports: go.Panel[] = [];
+  const outports: go.Panel[] = [];
 
   def.ports.forEach(p => {
     const port = makePort(p.portId, p.isIn, foreColor);
@@ -57,61 +57,43 @@ export function buildNodeTempBasic(def: ILogicNodeTempDefine) {
       outports.push(port);
   });
 
+  const w = def.wide ? Math.min(def.wide, cfg.wide) : cfg.wide;
+  const h = def.tall ? Math.min(def.tall, cfg.tall) : cfg.tall;
 
   var node = $(go.Node, "Spot",
-    $(go.Panel, "Auto",
-      { width: def.wide ?? cfg.wide, height: def.tall ?? cfg.tall },
-      $(go.Shape, "Rectangle",
-        {
-          fill: backColor, stroke: cfg.borderColor, strokeWidth: 1,
-          spot1: go.Spot.TopLeft, spot2: go.Spot.BottomRight
-        }),
-      $(go.TextBlock, def.category,
-        {
-          margin: new go.Margin(5, 5, 0, 5),
-          stroke: foreColor,
-          font: "bold 9pt sans-serif",
-          alignment: go.Spot.TopCenter,
-          alignmentFocus: new go.Spot(0, 0.5, 0, 0)
-        })
 
-      // $(go.Panel, "Table",
-      //   $(go.TextBlock, def.category,
-      //     {
-      //       row: 0,
-      //       margin: 3,
-      //       // maxSize: new go.Size(80, NaN),
-      //       stroke: foreColor,
-      //       font: "bold 9pt sans-serif"
-      //     }),
-
-
-      // $(go.TextBlock,
-      //   {
-      //     row: 2,
-      //     margin: 3,
-      //     editable: true,
-      //     maxSize: new go.Size(80, 40),
-      //     stroke: "white",
-      //     font: "bold 9pt sans-serif"
-      //   },
-      //   new go.Binding("text", "tag").makeTwoWay())
-
-    ),
-    $(go.Panel, "Vertical",
+    $(go.Shape, "Rectangle",
       {
-        alignment: go.Spot.Left,
-        alignmentFocus: new go.Spot(0, 0.5, 8, 0)
+        isPanelMain: true,
+        fill: backColor, stroke: cfg.borderColor, strokeWidth: 1,
+        width: w, height: h
+      }),
+
+    $(go.TextBlock, def.category,
+      {
+        stroke: foreColor,
+        font: "bold 9pt sans-serif",
+        alignment: go.Spot.TopCenter,
+        alignmentFocus: new go.Spot(0.5, 0, 0, -4)
+      }),
+
+    $(go.TextBlock,
+      {
+        editable: true, stroke: cfg.textColor,
+        alignment: go.Spot.BottomCenter,
+        alignmentFocus: new go.Spot(0.5, 0, 0, -4)
       },
+      new go.Binding("text", "tag").makeTwoWay()),
+
+    $(go.Panel, "Vertical",
+      { alignment: go.Spot.Left, alignmentFocus: new go.Spot(0, 0.4, 8, 0) },
       inports),
-    $(go.Panel, "Vertical",
-      {
-        alignment: go.Spot.Right,
-        alignmentFocus: new go.Spot(1, 0.5, -8, 0)
-      },
-      outports)
-  );
 
+    $(go.Panel, "Vertical",
+      { alignment: go.Spot.Right, alignmentFocus: new go.Spot(1, 0.4, -8, 0) },
+      outports),
+
+  )
 
   return node;
 }
@@ -124,6 +106,7 @@ export const nodeTempBasicSample: ILogicNodeTempDefine = {
     { portId: "Y", isIn: true, type: "Digital" },
     { portId: "OUT", isIn: false, type: "Digital" },
   ],
+  // tall: 90
 
 };
 
