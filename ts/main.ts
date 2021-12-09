@@ -1,10 +1,9 @@
-// import * as go from "../lib/gojs/go";
 import * as go from "./globalReference";
 import { setEnviroment } from "./config";
 import { makeLinkTemplate } from "./logic/makeLinkTemplate";
-// import * as GO from '../lib/gojs/go-debug'
-import { makeSvgNodeTemplateMap } from "./makeSvgNodeTemplateMap";
-import { buildNodeTempBasic, nodeTempBasicSample } from "./cosmuse/logic-tool";
+// import { makeSvgNodeTemplateMap } from "./makeSvgNodeTemplateMap";
+import { basicNodeTempMap, buildNodeTempBasic, nodeTempBasicSample } from "./cosmuse/logic-tool";
+import { mokeNodeDatas } from "./mock/dat1";
 
 const $ = go.GraphObject.make;
 
@@ -13,7 +12,8 @@ export function main(elementId: string, env: "local" | "remote") {
 
   const diagram = $(go.Diagram, elementId);
 
-  diagram.nodeTemplateMap = makeSvgNodeTemplateMap();
+  // diagram.nodeTemplateMap = makeSvgNodeTemplateMap();
+  diagram.nodeTemplateMap = basicNodeTempMap;
 
   // diagram.nodeTemplate = buildDefaultNodeTemplate();
   diagram.nodeTemplate = buildNodeTempBasic(nodeTempBasicSample);
@@ -66,12 +66,14 @@ function createGraphLinksModel(): go.GraphLinksModel {
   mode.linkFromPortIdProperty = "fromPort";
   mode.linkToPortIdProperty = "toPort";
 
-  mode.nodeDataArray = [
-    { key: "Alpha", color: "lightblue", category: "??", tag:"this is name"},
-    { key: "Beta", color: "orange", category: "nand" },
-    { key: "Gamma", color: "lightgreen", category: "xor" },
-    { key: "Delta", color: "pink", category: "xnor" },
-  ];
+  // mode.nodeDataArray = [
+  //   { key: "Alpha", color: "lightblue", category: "??", tag: "this is name" },
+  //   { key: "Beta", color: "orange", category: "nand" },
+  //   { key: "Gamma", color: "lightgreen", category: "xor" },
+  //   { key: "Delta", color: "pink", category: "xnor" },
+  // ];
+
+  mode.nodeDataArray = mokeNodeDatas();
 
   mode.linkDataArray = [];
   // mode.linkDataArray = [

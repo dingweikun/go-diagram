@@ -1,7 +1,9 @@
-[
+import { ILogicNodeTempDefine } from "../cosmuse/logic-interface";
+
+export const nodeTemps: ILogicNodeTempDefine[] = [
     {
         "category": "X_ADD",
-        "tag": "Add",
+        "title": "Add",
         "descr": "模拟函数:输出 Y = K1X1 + K2X2 + C",
         "ports": [
             {
@@ -23,7 +25,7 @@
     },
     {
         "category": "X_MUL",
-        "tag": "Mul",
+        "title": "Mul",
         "descr": "模拟函数:输出 Y = (K1X1(n) + C1)(K2X2(n)+C2)",
         "ports": [
             {
@@ -45,7 +47,7 @@
     },
     {
         "category": "X_DIV",
-        "tag": "Div",
+        "title": "Div",
         "descr": "模拟函数:对2个浮点变量除，输出一个浮点变量",
         "ports": [
             {
@@ -67,7 +69,7 @@
     },
     {
         "category": "X_SQRT",
-        "tag": "Sqrt",
+        "title": "Sqrt",
         "descr": "模拟函数:对输入浮点变量开方，输出一个浮点变量",
         "ports": [
             {
@@ -84,7 +86,7 @@
     },
     {
         "category": "X_ABS",
-        "tag": "Abs",
+        "title": "Abs",
         "descr": "模拟函数:对输入浮点变量取绝对值，输出一个浮点变量",
         "ports": [
             {
@@ -101,7 +103,7 @@
     },
     {
         "category": "X_POLYNOM",
-        "tag": "Polynom",
+        "title": "Polynom",
         "descr": "模拟函数:Y(n)=C0+C1X(n)+C2X(n)**2+C3X(n)**3+C4X(n)**4+C5X(n)**5",
         "ports": [
             {
@@ -118,7 +120,7 @@
     },
     {
         "category": "X_SUM8",
-        "tag": "Sum8",
+        "title": "Sum8",
         "descr": "模拟函数:对8个浮点变量加或减，输出一个浮点变量",
         "ports": [
             {
@@ -180,7 +182,7 @@
     },
     {
         "category": "X_FX",
-        "tag": "f(x)",
+        "title": "f(x)",
         "descr": "模拟函数:F(X)由12个坐标点(X1,Y1)...(X12,Y12)确定",
         "ports": [
             {
@@ -197,7 +199,7 @@
     },
     {
         "category": "X_POW_LOG",
-        "tag": "Pow/Log",
+        "title": "Pow/Log",
         "descr": "模拟函数:Mode=0: Y(n)=(k1*B(n)+C1)**(K2*X(n)+C2) Mode!=0: Y(n)=LOG(k1*B(n)+C1) (K2*X(n)+C2)",
         "ports": [
             {
@@ -219,7 +221,7 @@
     },
     {
         "category": "X_TRIANG",
-        "tag": "TriAng",
+        "title": "TriAng",
         "descr": "模拟函数:Y(n)=sin(k*X(n)+C), Y(n)=asin(k*X(n)+C",
         "ports": [
             {
@@ -236,7 +238,7 @@
     },
     {
         "category": "X_PTCAL",
-        "tag": "PTCal",
+        "title": "PTCal",
         "descr": "模拟函数:热力性质计算",
         "ports": [
             {
@@ -258,7 +260,7 @@
     },
     {
         "category": "X_IPROP",
-        "tag": "iProp",
+        "title": "iProp",
         "descr": "模拟函数:区间代数基本性质",
         "ports": [
             {
@@ -305,7 +307,7 @@
     },
     {
         "category": "X_LVLCOMP",
-        "tag": "LvlComp",
+        "title": "LvlComp",
         "descr": "模拟函数:汽包水位补偿模块",
         "ports": [
             {
@@ -352,7 +354,7 @@
     },
     {
         "category": "X_TWOSEL",
-        "tag": "TwoSel",
+        "title": "TwoSel",
         "descr": "控制算法:二选一选择器",
         "ports": [
             {
@@ -389,7 +391,7 @@
     },
     {
         "category": "X_THRSEL",
-        "tag": "ThrSel",
+        "title": "ThrSel",
         "descr": "控制算法:三选一选择器",
         "ports": [
             {
@@ -416,7 +418,7 @@
     },
     {
         "category": "X_SFT",
-        "tag": "SFT",
+        "title": "SFT",
         "descr": "控制算法:按输入开关量的值选择二个模拟量之一作为输出，存放在Y中",
         "ports": [
             {
@@ -453,7 +455,7 @@
     },
     {
         "category": "X_HLLMT",
-        "tag": "HLLmt",
+        "title": "HLLmt",
         "descr": "控制算法:将输入限幅在高低限之内。",
         "ports": [
             {
@@ -480,7 +482,7 @@
     },
     {
         "category": "X_HLALM",
-        "tag": "HLAlm",
+        "title": "HLAlm",
         "descr": "控制算法:按输入高低限检查，置位相应的开关指示位",
         "ports": [
             {
@@ -517,7 +519,7 @@
     },
     {
         "category": "X_RATLMT",
-        "tag": "RatLmt",
+        "title": "RatLmt",
         "descr": "控制算法:输出的速率被限于PL和NL之间，PL和NL以每分钟的变化量为单位",
         "ports": [
             {
@@ -544,7 +546,7 @@
     },
     {
         "category": "X_RATALM",
-        "tag": "RatAlm",
+        "title": "RatAlm",
         "descr": "控制算法:对输入的速率限检查，置位相应的开关指示位",
         "ports": [
             {
@@ -581,7 +583,7 @@
     },
     {
         "category": "X_DEV",
-        "tag": "Dev",
+        "title": "Dev",
         "descr": "控制算法:偏差运算",
         "ports": [
             {
@@ -628,7 +630,7 @@
     },
     {
         "category": "X_EPID",
-        "tag": "EPid",
+        "title": "EPid",
         "descr": "控制算法:差值输入 PID",
         "ports": [
             {
@@ -685,7 +687,7 @@
     },
     {
         "category": "X_EPID2",
-        "tag": "EPid2",
+        "title": "EPid2",
         "descr": "控制算法:带闭锁差值输入 PID",
         "ports": [
             {
@@ -767,7 +769,7 @@
     },
     {
         "category": "X_BALAN2",
-        "tag": "Balan2",
+        "title": "Balan2",
         "descr": "控制算法:二输入平衡模块",
         "ports": [
             {
@@ -824,7 +826,7 @@
     },
     {
         "category": "X_BALAN8",
-        "tag": "Balan8",
+        "title": "Balan8",
         "descr": "控制算法:八输入平衡模块",
         "ports": [
             {
@@ -936,7 +938,7 @@
     },
     {
         "category": "X_DDS",
-        "tag": "DDS",
+        "title": "DDS",
         "descr": "控制算法:数字驱动伺服模块DDS",
         "ports": [
             {
@@ -968,7 +970,7 @@
     },
     {
         "category": "X_SAIPRO",
-        "tag": "SAIPro",
+        "title": "SAIPro",
         "descr": "控制算法:慢信号保护模块SAIPro",
         "ports": [
             {
@@ -995,7 +997,7 @@
     },
     {
         "category": "X_SMITH",
-        "tag": "Smith",
+        "title": "Smith",
         "descr": "控制算法:史密斯预测器Smith",
         "ports": [
             {
@@ -1062,7 +1064,7 @@
     },
     {
         "category": "X_DEVSWH",
-        "tag": "DevSwh",
+        "title": "DevSwh",
         "descr": "控制算法:设备切换算法",
         "ports": [
             {
@@ -1139,7 +1141,7 @@
     },
     {
         "category": "X_MSFT",
-        "tag": "MSFT",
+        "title": "MSFT",
         "descr": "控制算法:多切换器，当Z4=1时,Y=X4;当Z3=1时,Y=X3;当Z2=1时,Y=X2;当Z1=1时,Y=X1;当无Z输入时,Y=X0;优先级Z4>Z3>Z2>Z1;D=Z1^Z2^Z3^Z4;",
         "ports": [
             {
@@ -1226,7 +1228,7 @@
     },
     {
         "category": "X_XNETAI",
-        "tag": "XNetAI",
+        "title": "XNetAI",
         "descr": "I/O模块:将其它DPU上的模拟点取下，供其它功能块读取。",
         "ports": [
             {
@@ -1238,7 +1240,7 @@
     },
     {
         "category": "X_XNETDI",
-        "tag": "XNetDI",
+        "title": "XNetDI",
         "descr": "I/O模块:将其它DPU上的开关点取下，供其它功能块读取。",
         "ports": [
             {
@@ -1250,7 +1252,7 @@
     },
     {
         "category": "X_XNETAO",
-        "tag": "XNetAO",
+        "title": "XNetAO",
         "descr": "I/O模块:将模拟实时数据在XDPS实时网上广播。",
         "ports": [
             {
@@ -1267,7 +1269,7 @@
     },
     {
         "category": "X_XNETDO",
-        "tag": "XNetDO",
+        "title": "XNetDO",
         "descr": "I/O模块:将开关实时数据在XDPS实时网上广播。",
         "ports": [
             {
@@ -1284,7 +1286,7 @@
     },
     {
         "category": "X_XAI",
-        "tag": "XAI",
+        "title": "XAI",
         "descr": "I/O模块:输出Y(n)=转换(AD of Addr), AD值为WORD",
         "ports": [
             {
@@ -1301,7 +1303,7 @@
     },
     {
         "category": "X_XDI",
-        "tag": "XDI",
+        "title": "XDI",
         "descr": "I/O模块:输出 Z(n)=转换(bit of Addr)",
         "ports": [
             {
@@ -1313,7 +1315,7 @@
     },
     {
         "category": "X_XAO",
-        "tag": "XAO",
+        "title": "XAO",
         "descr": "I/O模块:输出AD(n)=X(n)*(MaxAD-MinAD)/(MaxX-MinAD)",
         "ports": [
             {
@@ -1330,7 +1332,7 @@
     },
     {
         "category": "X_XDO",
-        "tag": "XDO",
+        "title": "XDO",
         "descr": "I/O模块:输出经转换(求反或不求反)后送端子",
         "ports": [
             {
@@ -1347,7 +1349,7 @@
     },
     {
         "category": "X_XPI",
-        "tag": "XPI",
+        "title": "XPI",
         "descr": "I/O模块:从I/O通道取得脉冲计数",
         "ports": [
             {
@@ -1364,7 +1366,7 @@
     },
     {
         "category": "X_XPGAI",
-        "tag": "XPgAI",
+        "title": "XPgAI",
         "descr": "I/O模块:将其它Page上的模拟点取下，供本页功能块读取。",
         "ports": [
             {
@@ -1376,7 +1378,7 @@
     },
     {
         "category": "X_XPGDI",
-        "tag": "XPgDI",
+        "title": "XPgDI",
         "descr": "I/O模块:将其它Page上的开关点取下，供本页功能块读取。",
         "ports": [
             {
@@ -1388,7 +1390,7 @@
     },
     {
         "category": "X_XPGAO",
-        "tag": "XPgAO",
+        "title": "XPgAO",
         "descr": "I/O模块:将本页模拟点共享出去，供其它页的XPgAI功能块读取",
         "ports": [
             {
@@ -1400,7 +1402,7 @@
     },
     {
         "category": "X_XPGDO",
-        "tag": "XPgDO",
+        "title": "XPgDO",
         "descr": "I/O模块:将本页开关点共享出去，供其它页的XPgDO功能块读取",
         "ports": [
             {
@@ -1412,7 +1414,7 @@
     },
     {
         "category": "X_AND",
-        "tag": "And",
+        "title": "And",
         "descr": "逻辑运算:2输入与",
         "ports": [
             {
@@ -1434,7 +1436,7 @@
     },
     {
         "category": "X_OR",
-        "tag": "Or",
+        "title": "Or",
         "descr": "逻辑运算:2输入或",
         "ports": [
             {
@@ -1456,7 +1458,7 @@
     },
     {
         "category": "X_NOT",
-        "tag": "Not",
+        "title": "Not",
         "descr": "逻辑运算:对一个布尔变量取反操作，输出一个布尔量",
         "ports": [
             {
@@ -1473,7 +1475,7 @@
     },
     {
         "category": "X_XOR",
-        "tag": "Xor",
+        "title": "Xor",
         "descr": "逻辑运算:2输入异或",
         "ports": [
             {
@@ -1495,7 +1497,7 @@
     },
     {
         "category": "X_QOR8",
-        "tag": "Qor8",
+        "title": "Qor8",
         "descr": "逻辑运算:对8个布尔量QOR操作，输出一个布尔量",
         "ports": [
             {
@@ -1552,7 +1554,7 @@
     },
     {
         "category": "X_RSFLP",
-        "tag": "Rsflp",
+        "title": "Rsflp",
         "descr": "逻辑运算:构成一个电平型RS触发器，输出2个布尔量",
         "ports": [
             {
@@ -1579,7 +1581,7 @@
     },
     {
         "category": "X_TIMER",
-        "tag": "Timer",
+        "title": "Timer",
         "descr": "逻辑运算:定时器",
         "ports": [
             {
@@ -1611,7 +1613,7 @@
     },
     {
         "category": "X_CNT",
-        "tag": "Cnt",
+        "title": "Cnt",
         "descr": "逻辑运算:用于对开关信号的累计",
         "ports": [
             {
@@ -1638,7 +1640,7 @@
     },
     {
         "category": "X_CMP",
-        "tag": "Cmp",
+        "title": "Cmp",
         "descr": "逻辑运算:对输入X1，X2进行MODE指定的比较运算",
         "ports": [
             {
@@ -1660,7 +1662,7 @@
     },
     {
         "category": "X_CYCTIME",
-        "tag": "CycTime",
+        "title": "CycTime",
         "descr": "逻辑运算:对将当前时间与设定时间比较，首次达到或超过设定时间时，输出一个单脉冲宽度为计算周期?",
         "ports": [
             {
@@ -1672,7 +1674,7 @@
     },
     {
         "category": "X_STEP",
-        "tag": "Step",
+        "title": "Step",
         "descr": "逻辑运算:提供了组级顺控和子组级顺控逻辑的实现方法",
         "ports": [
             {
@@ -1834,7 +1836,7 @@
     },
     {
         "category": "X_SPO",
-        "tag": "SPO",
+        "title": "SPO",
         "descr": "逻辑运算:软件脉冲列输出模块SPO",
         "ports": [
             {
@@ -1851,7 +1853,7 @@
     },
     {
         "category": "X_DSFT",
-        "tag": "DSFT",
+        "title": "DSFT",
         "descr": "逻辑运算:开关量选择模块DSFT",
         "ports": [
             {
@@ -1878,7 +1880,7 @@
     },
     {
         "category": "X_FIRST",
-        "tag": "First",
+        "title": "First",
         "descr": "逻辑运算:找出16个输入中第一个变为1的量，输出其序号",
         "ports": [
             {
@@ -1990,7 +1992,7 @@
     },
     {
         "category": "X_S_MA",
-        "tag": "S/MA",
+        "title": "S/MA",
         "descr": "操作器:实现回路的软手操，接收操作指令",
         "ports": [
             {
@@ -2072,7 +2074,7 @@
     },
     {
         "category": "X_KBML",
-        "tag": "KBML",
+        "title": "KBML",
         "descr": "操作器:输出一个可被操作的浮点变量，接收增减输出操作指令",
         "ports": [
             {
@@ -2109,7 +2111,7 @@
     },
     {
         "category": "X_DEVICE",
-        "tag": "DEVICE",
+        "title": "DEVICE",
         "descr": "操作器:设备控制算法完成与设备输入，输出和其它联锁信号的接口",
         "ports": [
             {
@@ -2246,7 +2248,7 @@
     },
     {
         "category": "X_D_MA",
-        "tag": "D/MA",
+        "title": "D/MA",
         "descr": "操作器:输出一个可被操作的布尔变量，接收操作指令，Set,Rset,Toggle",
         "ports": [
             {
@@ -2268,7 +2270,7 @@
     },
     {
         "category": "X_ADS_MA",
-        "tag": "ADS/MA",
+        "title": "ADS/MA",
         "descr": "操作器:实现回路的软手操，接收操作指令",
         "ports": [
             {
@@ -2360,7 +2362,7 @@
     },
     {
         "category": "X_EDEVICE",
-        "tag": "EDEVICE",
+        "title": "EDEVICE",
         "descr": "操作器:电气设备控制算法完成与设备输入，输出和其它联锁信号的接口",
         "ports": [
             {
@@ -2477,7 +2479,7 @@
     },
     {
         "category": "X_ES_MA",
-        "tag": "ES/MA",
+        "title": "ES/MA",
         "descr": "操作器:实现回路的软手操，接收操作指令",
         "ports": [
             {
@@ -2599,7 +2601,7 @@
     },
     {
         "category": "X_TQ",
-        "tag": "TQ",
+        "title": "TQ",
         "descr": "特殊模块:取输入测点所属功能块的状态，并转换为布尔量输出，在输入指针为NULL时，输出全1",
         "ports": [
             {
@@ -2636,7 +2638,7 @@
     },
     {
         "category": "X_B16TOL",
-        "tag": "B16ToL",
+        "title": "B16ToL",
         "descr": "特殊模块:将16个布尔变量转换为长整形变量，Z1到Z16依次转存到Y的b0到b15位，若某个Z为空脚，其Y中的对应位置0，且不影响Y的品质",
         "ports": [
             {
@@ -2728,7 +2730,7 @@
     },
     {
         "category": "X_LTOB16",
-        "tag": "LToB16",
+        "title": "LToB16",
         "descr": "特殊模块:将长整形变量转换为16个布尔变量，X的b0到b15依次转存到Z1到Z16",
         "ports": [
             {
@@ -2820,7 +2822,7 @@
     },
     {
         "category": "X_LTOF",
-        "tag": "LTOF",
+        "title": "LTOF",
         "descr": "特殊模块:将长整型模拟变量值以定义的方式转换为浮点值。",
         "ports": [
             {
@@ -2837,7 +2839,7 @@
     },
     {
         "category": "X_TDPU",
-        "tag": "TDPU",
+        "title": "TDPU",
         "descr": "特殊模块:取指定节点的状态",
         "ports": [
             {
@@ -2884,7 +2886,7 @@
     },
     {
         "category": "X_TCARD",
-        "tag": "TCard",
+        "title": "TCard",
         "descr": "特殊模块:取指定I/O站中I/O卡件的品质",
         "ports": [
             {
@@ -2896,7 +2898,7 @@
     },
     {
         "category": "X_TNODE",
-        "tag": "TNode",
+        "title": "TNode",
         "descr": "特殊模块:取指定I/O站的品质",
         "ports": [
             {
@@ -2908,7 +2910,7 @@
     },
     {
         "category": "X_TPRO",
-        "tag": "TPRO",
+        "title": "TPRO",
         "descr": "特殊模块:XDPS时间处理模块TPRO",
         "ports": [
             {
@@ -2950,7 +2952,7 @@
     },
     {
         "category": "X_TREC",
-        "tag": "TREC",
+        "title": "TREC",
         "descr": "特殊模块:时间记录模块TREC",
         "ports": [
             {
@@ -2982,7 +2984,7 @@
     },
     {
         "category": "X_TTOS",
-        "tag": "TtoS",
+        "title": "TtoS",
         "descr": "特殊模块:时间转换模块TtoS",
         "ports": [
             {
@@ -3034,7 +3036,7 @@
     },
     {
         "category": "X_STOT",
-        "tag": "StoT",
+        "title": "StoT",
         "descr": "特殊模块:时间转换模块StoT",
         "ports": [
             {
@@ -3086,7 +3088,7 @@
     },
     {
         "category": "X_AXSEL",
-        "tag": "AxSel",
+        "title": "AxSel",
         "descr": "特殊模块:模拟量隐式选择器",
         "ports": [
             {
@@ -3113,7 +3115,7 @@
     },
     {
         "category": "X_TNODE2",
-        "tag": "TNode2",
+        "title": "TNode2",
         "descr": "特殊模块:取指定I/O站的品质",
         "ports": [
             {
@@ -3130,7 +3132,7 @@
     },
     {
         "category": "X_CHGPARA",
-        "tag": "ChgPara",
+        "title": "ChgPara",
         "descr": "特殊模块:修改功能块参数",
         "ports": [
             {
@@ -3152,7 +3154,7 @@
     },
     {
         "category": "X_LEADLAG",
-        "tag": "LeadLag",
+        "title": "LeadLag",
         "descr": "时间过程函数:超前滞后模块",
         "ports": [
             {
@@ -3179,7 +3181,7 @@
     },
     {
         "category": "X_DELAY",
-        "tag": "Delay",
+        "title": "Delay",
         "descr": "时间过程函数:滞后模块",
         "ports": [
             {
@@ -3206,7 +3208,7 @@
     },
     {
         "category": "X_DIFF",
-        "tag": "Diff",
+        "title": "Diff",
         "descr": "时间过程函数:微分模块",
         "ports": [
             {
@@ -3223,7 +3225,7 @@
     },
     {
         "category": "X_TSUM",
-        "tag": "TSum",
+        "title": "TSum",
         "descr": "时间过程函数:对输入模拟变量在Set指定的一段内进行累加，平均，或取最大，最小值，并记录前次统计值",
         "ports": [
             {
@@ -3250,7 +3252,7 @@
     },
     {
         "category": "X_FILTER",
-        "tag": "Filter",
+        "title": "Filter",
         "descr": "时间过程函数:对输入模拟变量进行8阶数字滤波",
         "ports": [
             {
@@ -3267,7 +3269,7 @@
     },
     {
         "category": "X_RMP",
-        "tag": "Rmp",
+        "title": "Rmp",
         "descr": "时间过程函数:斜坡信号发生器",
         "ports": [
             {
@@ -3304,7 +3306,7 @@
     },
     {
         "category": "X_FT",
-        "tag": "f(t)",
+        "title": "f(t)",
         "descr": "时间过程函数:段信号发生器",
         "ports": [
             {
@@ -3331,7 +3333,7 @@
     },
     {
         "category": "X_FT12",
-        "tag": "F(t12)",
+        "title": "F(t12)",
         "descr": "时间过程函数:12段信号发生器",
         "ports": [
             {
@@ -3378,7 +3380,7 @@
     },
     {
         "category": "X_TSUMD",
-        "tag": "TSumD",
+        "title": "TSumD",
         "descr": "时间过程函数:对输入开关量在On指定的一段时间内对0或1计时，并记录前次统计值",
         "ports": [
             {
@@ -3405,7 +3407,7 @@
     },
     {
         "category": "X_SIGNAL",
-        "tag": "Signal",
+        "title": "Signal",
         "descr": "时间过程函数:信号发生器",
         "ports": [
             {
@@ -3430,4 +3432,17 @@
             }
         ]
     }
-]
+];
+
+export function mokeNodeDatas(): any[] {
+    const nodeDatas: any[] = [];
+    nodeTemps.forEach(tp => {
+        const dat = {
+            category: tp.category,
+            tag: tp.category
+        }
+        nodeDatas.push(dat);
+    });
+    return nodeDatas;
+}
+

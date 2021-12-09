@@ -12,7 +12,8 @@ export interface ILogicPortDefine {
 
 export interface ILogicNodeDefine {
   readonly category: string; // 大写字母+下划线
-  readonly descr: string;
+  readonly title?: string;
+  readonly descr?: string;
   readonly ports: ILogicPortDefine[];
 }
 

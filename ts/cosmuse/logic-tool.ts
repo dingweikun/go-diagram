@@ -1,4 +1,5 @@
 import * as go from "../globalReference";
+import { nodeTemps } from "../mock/dat1";
 import * as cfg from "./config";
 import { ILogicNodeTempDefine } from "./logic-interface";
 
@@ -39,8 +40,6 @@ export function makePort(portId: string, isInport: boolean, labelColor: string) 
   return panel;
 }
 
-
-
 export function buildNodeTempBasic(def: ILogicNodeTempDefine) {
 
   const foreColor = def.fColor ?? cfg.foreColor;
@@ -69,7 +68,7 @@ export function buildNodeTempBasic(def: ILogicNodeTempDefine) {
         width: w, height: h
       }),
 
-    $(go.TextBlock, def.category,
+    $(go.TextBlock, def.title ?? def.category,
       {
         stroke: foreColor,
         font: "bold 9pt sans-serif",
@@ -86,11 +85,11 @@ export function buildNodeTempBasic(def: ILogicNodeTempDefine) {
       new go.Binding("text", "tag").makeTwoWay()),
 
     $(go.Panel, "Vertical",
-      { alignment: go.Spot.Left, alignmentFocus: new go.Spot(0, 0.4, 8, 0) },
+      { alignment: go.Spot.Left, alignmentFocus: new go.Spot(0, 0.3, 8, 0) },
       inports),
 
     $(go.Panel, "Vertical",
-      { alignment: go.Spot.Right, alignmentFocus: new go.Spot(1, 0.4, -8, 0) },
+      { alignment: go.Spot.Right, alignmentFocus: new go.Spot(1, 0.3, -8, 0) },
       outports),
 
   )
@@ -107,53 +106,15 @@ export const nodeTempBasicSample: ILogicNodeTempDefine = {
     { portId: "OUT", isIn: false, type: "Digital" },
   ],
   // tall: 90
-
 };
 
-// function makeTemplate(typename, icon, background, inports, outports) {
-//   var node = $(go.Node, "Spot",
-//     $(go.Panel, "Auto",
-//       { width: 100, height: 120 },
-//       $(go.Shape, "Rectangle",
-//         {
-//           fill: background, stroke: null, strokeWidth: 0,
-//           spot1: go.Spot.TopLeft, spot2: go.Spot.BottomRight
-//         }),
-//       $(go.Panel, "Table",
-//         $(go.TextBlock, typename,
-//           {
-//             row: 0,
-//             margin: 3,
-//             maxSize: new go.Size(80, NaN),
-//             stroke: "white",
-//             font: "bold 11pt sans-serif"
-//           }),
-//         $(go.Picture, icon,
-//           { row: 1, width: 16, height: 16, scale: 3.0 }),
-//         $(go.TextBlock,
-//           {
-//             row: 2,
-//             margin: 3,
-//             editable: true,
-//             maxSize: new go.Size(80, 40),
-//             stroke: "white",
-//             font: "bold 9pt sans-serif"
-//           },
-//           new go.Binding("text", "name").makeTwoWay())
-//       )
-//     ),
-//     $(go.Panel, "Vertical",
-//       {
-//         alignment: go.Spot.Left,
-//         alignmentFocus: new go.Spot(0, 0.5, 8, 0)
-//       },
-//       inports),
-//     $(go.Panel, "Vertical",
-//       {
-//         alignment: go.Spot.Right,
-//         alignmentFocus: new go.Spot(1, 0.5, -8, 0)
-//       },
-//       outports)
-//   );
-//   myDiagram.nodeTemplateMap.set(typename, node);
-// }
+
+
+
+function makeBasicNodeTempMap(defs: ILogicNodeTempDefine[]) {
+  const map = new go.Map<string, go.Part>();
+  defs.forEach(def => map.add(def.category, buildNodeTempBasic(def)));
+  return map;
+}
+
+export const basicNodeTempMap = makeBasicNodeTempMap(nodeTemps);

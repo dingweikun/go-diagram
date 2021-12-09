@@ -55,8 +55,7 @@
             let category = moduleElement.getAttribute('name')?.toUpperCase().trim();
             if (category.length <= 0) return null;
 
-            let tag = moduleElement.getAttribute('Desc')?.trim();
-            if (tag.length <= 0) return null;
+            let title = moduleElement.getAttribute('Desc')?.trim();
 
             let descr = moduleElement.getAttribute('Comment').trim();
 
@@ -71,7 +70,7 @@
 
             return {
                 category: category,
-                tag: tag,
+                title: title,
                 descr: descr,
                 ports: ports
             }
